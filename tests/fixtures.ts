@@ -12,3 +12,33 @@ export async function readLanguage(browser: Browser): Promise<Language> {
   if (!language) throw new Error(`No language in tests/languages.ts for the browser locale ${locale}`);
   return language;
 }
+
+// Every text on the page that's wider than its box, as "<tag>: <text>": the bug a longer translation brings.
+// Placeholders and the select's chosen option are measured with the field's own font, since the box doesn't grow.
+export async function findOverflowingText(browser: Browser): Promise<string[]> {
+  return browser.evaluate(() => {
+    const canvas = document.createElement("canvas").getContext("2d")!;
+    const describe = (element: Element, text: string) => `${element.tagName.toLowerCase()}: ${text.trim()}`;
+    const overflowing: string[] = [];
+
+    for (const element of document.querySelectorAll("body *")) {
+      const ownText = [...element.childNodes].some(
+        (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim(),
+      );
+      if (!(element instanceof HTMLElement) || !ownText || getComputedStyle(element).display === "inline") continue;
+      // Hidden for screen readers on purpose, like Nuxt's 1px route announcer.
+      if (element.clientWidth <= 1) continue;
+      if (element.scrollWidth > element.clientWidth + 1) overflowing.push(describe(element, element.textContent ?? ""));
+    }
+
+    for (const field of document.querySelectorAll<HTMLInputElement | HTMLSelectElement>("input, select")) {
+      const text = field instanceof HTMLSelectElement ? (field.selectedOptions[0]?.text ?? "") : field.placeholder;
+      const style = getComputedStyle(field);
+      canvas.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+      const room = field.clientWidth - parseFloat(style.paddingInlineStart) - parseFloat(style.paddingInlineEnd);
+      if (canvas.measureText(text).width > room + 1) overflowing.push(describe(field, text));
+    }
+
+    return overflowing;
+  });
+}
