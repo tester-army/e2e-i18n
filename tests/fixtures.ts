@@ -4,6 +4,13 @@ import { LANGUAGES } from "./languages";
 
 export type Language = (typeof LANGUAGES)[number];
 
+export const skip =
+  process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN
+    ? false
+    : "set AI_GATEWAY_API_KEY to run the agent tests";
+
+export const ADA = { name: "Ada Lovelace", email: "ada@example.com", message: "Hello from the e2e tests." };
+
 // The language this target's browser is set to. Read from the browser, not the page, or a page in the wrong
 // language would test itself against itself. browser.evaluate needs an open page, so call it after app.open.
 export async function readLanguage(browser: Browser): Promise<Language> {
