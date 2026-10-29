@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-1 flex-col px-6 pt-12 pb-8 sm:px-10 sm:pt-24">
+  <main class="px-6 pt-12 pb-8 sm:px-10 sm:pt-24">
     <div class="mx-auto flex w-full max-w-300 flex-col gap-6">
       <div class="flex flex-col gap-3">
         <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">

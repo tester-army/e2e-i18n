@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     // Otherwise a cookie from the first visit beats a later change of browser language.
     detectBrowserLanguage: { useCookie: false },
   },
+  // The page differs by Accept-Language, so a cache must not serve one language to everyone.
+  routeRules: { "/**": { headers: { vary: "Accept-Language" } } },
   // Its floating button would show in screenshots and in the agent's view.
   devtools: { enabled: false },
   css: ["~/assets/css/fonts.css", "~/assets/css/e2e.css"],
