@@ -3,12 +3,20 @@ const TOPICS = ["question", "billing", "bug"] as const;
 const REQUIRED = ["name", "email", "message"] as const;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const form = reactive({ name: "", email: "", topic: "question", message: "" });
+const blankForm = () => ({ name: "", email: "", topic: "question" as (typeof TOPICS)[number], message: "" });
+const form = reactive(blankForm());
 const showErrors = ref(false);
 const sent = ref<{ name: string; email: string } | null>(null);
 // Send is off until hydration, so an early click can't submit the form natively.
 const hydrated = ref(false);
 onMounted(() => (hydrated.value = true));
+
+const inputs = {
+  name: useTemplateRef<HTMLInputElement>("nameInput"),
+  email: useTemplateRef<HTMLInputElement>("emailInput"),
+  message: useTemplateRef<HTMLTextAreaElement>("messageInput"),
+};
+const sentHeading = useTemplateRef<HTMLHeadingElement>("sentHeading");
 
 // Keys, not text, so the errors follow the page's language.
 const errors = computed(() => ({
@@ -22,64 +30,70 @@ function errorFor(field: (typeof REQUIRED)[number]) {
   return key && t(key);
 }
 
-function submit() {
+// Focus moves after the DOM updates, so a screen reader hears the field as invalid, then the thank-you heading.
+async function submit() {
   showErrors.value = true;
   const invalid = REQUIRED.find((field) => errors.value[field]);
   if (invalid) {
-    document.getElementById(invalid)?.focus();
+    await nextTick();
+    inputs[invalid].value?.focus();
     return;
   }
   sent.value = { name: form.name.trim(), email: form.email.trim() };
+  await nextTick();
+  sentHeading.value?.focus();
 }
 
 async function writeAnother() {
-  Object.assign(form, { name: "", email: "", topic: "question", message: "" });
+  Object.assign(form, blankForm());
   showErrors.value = false;
   sent.value = null;
   await nextTick();
-  document.getElementById("name")?.focus();
+  inputs.name.value?.focus();
 }
 </script>
 
 <template>
-  <div aria-live="polite" class="border border-e2e-hairline-strong bg-e2e-panel">
+  <div class="border border-e2e-hairline-strong bg-e2e-panel">
     <div v-if="sent" data-testid="sent" class="flex flex-col items-start gap-4 p-6 sm:p-8">
-      <h2 class="type-h3-display text-e2e-text-bright">{{ $t("sent.title") }}</h2>
+      <h2 ref="sentHeading" tabindex="-1" class="type-h3-display text-e2e-text-bright outline-hidden">
+        {{ $t("sent.title") }}
+      </h2>
       <p class="type-body text-e2e-text-secondary">{{ $t("sent.body", sent) }}</p>
       <OutlineButton class="mt-2 sm:w-auto" @click="writeAnother">{{ $t("sent.again") }}</OutlineButton>
     </div>
 
     <form v-else data-testid="contact-form" novalidate @submit.prevent="submit">
       <div class="grid gap-5 p-6 sm:p-8 md:grid-cols-3">
-        <FormField id="name" :label="$t('form.name')" :error="errorFor('name')">
+        <FormField id="name" v-slot="control" :label="$t('form.name')" :error="errorFor('name')">
           <input
-            id="name"
+            v-bind="control"
+            ref="nameInput"
             v-model="form.name"
             type="text"
             autocomplete="name"
+            required
             :placeholder="$t('form.namePlaceholder')"
-            :aria-invalid="errorFor('name') ? 'true' : undefined"
-            :aria-describedby="errorFor('name') ? 'name-error' : undefined"
             :class="[FIELD, 'h-11']"
           />
         </FormField>
 
-        <FormField id="email" :label="$t('form.email')" :error="errorFor('email')">
+        <FormField id="email" v-slot="control" :label="$t('form.email')" :error="errorFor('email')">
           <input
-            id="email"
+            v-bind="control"
+            ref="emailInput"
             v-model="form.email"
             type="email"
             autocomplete="email"
+            required
             :placeholder="$t('form.emailPlaceholder')"
-            :aria-invalid="errorFor('email') ? 'true' : undefined"
-            :aria-describedby="errorFor('email') ? 'email-error' : undefined"
             :class="[FIELD, 'h-11']"
           />
         </FormField>
 
-        <FormField id="topic" :label="$t('form.topic')">
+        <FormField id="topic" v-slot="control" :label="$t('form.topic')">
           <div class="relative">
-            <select id="topic" v-model="form.topic" :class="[FIELD, 'h-11 appearance-none pe-10']">
+            <select v-bind="control" v-model="form.topic" :class="[FIELD, 'h-11 appearance-none pe-10']">
               <option v-for="topic in TOPICS" :key="topic" :value="topic">{{ $t(`form.topics.${topic}`) }}</option>
             </select>
             <svg
@@ -93,14 +107,14 @@ async function writeAnother() {
         </FormField>
 
         <div class="md:col-span-2">
-          <FormField id="message" :label="$t('form.message')" :error="errorFor('message')">
+          <FormField id="message" v-slot="control" :label="$t('form.message')" :error="errorFor('message')">
             <textarea
-              id="message"
+              v-bind="control"
+              ref="messageInput"
               v-model="form.message"
               rows="3"
+              required
               :placeholder="$t('form.messagePlaceholder')"
-              :aria-invalid="errorFor('message') ? 'true' : undefined"
-              :aria-describedby="errorFor('message') ? 'message-error' : undefined"
               :class="[FIELD, 'min-h-24 resize-y py-3']"
             />
           </FormField>
