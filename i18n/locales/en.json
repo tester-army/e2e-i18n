@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "title": "Contact the e2e team",
+    "description": "A contact form in English, German, and Spanish, tested end to end with e2e."
+  },
+  "header": {
+    "docs": "docs"
+  }
+}

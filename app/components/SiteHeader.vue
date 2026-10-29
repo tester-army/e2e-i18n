@@ -16,7 +16,7 @@ const E2E_DOCS_URL = "https://e2e.tester.army/docs";
         rel="noreferrer"
         class="type-nav text-e2e-text-soft transition-colors hover:text-e2e-text-bright motion-reduce:transition-none"
       >
-        docs
+        {{ $t("header.docs") }}
       </a>
     </div>
   </header>
