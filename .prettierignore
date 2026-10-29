@@ -1,0 +1,9 @@
+.agents/
+.claude/
+.cursor/
+.e2e/
+.nuxt/
+.output/
+.data/
+package-lock.json
+*_PLAN.md

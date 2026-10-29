@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+  modules: ["@nuxt/eslint"],
   // The DevTools button floats over the page, so it would show in screenshots and in the agent's view.
   devtools: { enabled: false },
   css: ["~/assets/css/fonts.css", "~/assets/css/e2e.css"],
@@ -21,5 +22,12 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+  },
+  typescript: {
+    // The e2e config and tests run in Node, next to nuxt.config.ts.
+    nodeTsConfig: {
+      include: ["../e2e.config.ts", "../tests/**/*"],
+      compilerOptions: { types: ["node"] },
+    },
   },
 });
