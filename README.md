@@ -44,7 +44,7 @@ The personas' model goes through the Vercel AI Gateway, so copy `.env.example` t
 npm run test:e2e
 ```
 
-`npx e2e run --target de` runs one language. The stored screenshots in `tests/home.e2e.ts-snapshots/` are from macOS; on another system, run `npx e2e run --update-snapshots` once and check the new ones. To test a different URL, set `APP_URL`. Configuration lives in `e2e.config.ts`.
+`npx e2e run --target de` runs one language. The stored screenshots in `tests/home.e2e.ts-snapshots/` are from headless Chromium on macOS: with `--headed`, that test skips, since a headed browser draws small text a little differently, and on another system, run `npx e2e run --update-snapshots` once and check the new ones. To test a different URL, set `APP_URL`. Configuration lives in `e2e.config.ts`.
 
 ## Scripts
 

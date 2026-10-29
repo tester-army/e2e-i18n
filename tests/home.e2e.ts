@@ -23,6 +23,11 @@ test("sending an empty form marks every required field", async ({ app, screen, b
 
 test("looks right in every language", async ({ app, screen, browser }) => {
   await app.open("/");
+  const userAgent = await browser.evaluate(() => navigator.userAgent);
+  test.skip(
+    !userAgent.includes("HeadlessChrome"),
+    "the stored screenshots are from headless Chromium, and --headed draws small text a little differently",
+  );
   // Send turns on once the page hydrates; the fonts swap in after the first paint.
   await expect(screen.getByTestId("send")).toBeEnabled();
   await browser.evaluate(() => document.fonts.ready.then(() => true));
