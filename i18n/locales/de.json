@@ -4,6 +4,7 @@
     "description": "Ein Kontaktformular auf Englisch, Deutsch und Spanisch, Ende-zu-Ende getestet mit e2e."
   },
   "header": {
+    "home": "Startseite",
     "docs": "Doku"
   },
   "intro": {

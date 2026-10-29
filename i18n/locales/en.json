@@ -4,6 +4,7 @@
     "description": "A contact form in English, German, and Spanish, tested end to end with e2e."
   },
   "header": {
+    "home": "Home",
     "docs": "docs"
   },
   "intro": {
