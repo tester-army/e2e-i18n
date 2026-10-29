@@ -5,5 +5,40 @@
   },
   "header": {
     "docs": "docs"
-  }
+  },
+  "intro": {
+    "eyebrow": "Contact",
+    "heading": "Write to the e2e team",
+    "body": "This page speaks your browser's language: English, German, or Spanish."
+  },
+  "languages": {
+    "label": "Language from your browser"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Ada Lovelace",
+    "email": "Email",
+    "emailPlaceholder": "you{'@'}example.com",
+    "topic": "Topic",
+    "topics": {
+      "question": "A question",
+      "billing": "Billing",
+      "bug": "A bug report"
+    },
+    "message": "Message",
+    "messagePlaceholder": "How can we help?",
+    "note": "We reply within two working days.",
+    "send": "Send message"
+  },
+  "errors": {
+    "name": "Enter your name.",
+    "email": "Enter a valid email address.",
+    "message": "Write a message."
+  },
+  "sent": {
+    "title": "Message sent",
+    "body": "Thanks, {name}. We'll reply to {email} within two working days.",
+    "again": "Write another message"
+  },
+  "footnote": "An example of testing one page in every language with e2e, built with {stack}."
 }

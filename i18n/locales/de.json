@@ -5,5 +5,40 @@
   },
   "header": {
     "docs": "Doku"
-  }
+  },
+  "intro": {
+    "eyebrow": "Kontakt",
+    "heading": "Schreib dem e2e-Team",
+    "body": "Diese Seite spricht die Sprache deines Browsers: Englisch, Deutsch oder Spanisch."
+  },
+  "languages": {
+    "label": "Sprache aus deinem Browser"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Erika Mustermann",
+    "email": "E-Mail",
+    "emailPlaceholder": "du{'@'}example.com",
+    "topic": "Thema",
+    "topics": {
+      "question": "Eine Frage",
+      "billing": "Abrechnung",
+      "bug": "Ein Fehlerbericht"
+    },
+    "message": "Nachricht",
+    "messagePlaceholder": "Wie können wir helfen?",
+    "note": "Wir antworten innerhalb von zwei Werktagen.",
+    "send": "Nachricht senden"
+  },
+  "errors": {
+    "name": "Gib deinen Namen ein.",
+    "email": "Gib eine gültige E-Mail-Adresse ein.",
+    "message": "Schreib eine Nachricht."
+  },
+  "sent": {
+    "title": "Nachricht gesendet",
+    "body": "Danke, {name}. Wir antworten innerhalb von zwei Werktagen an {email}.",
+    "again": "Weitere Nachricht schreiben"
+  },
+  "footnote": "Ein Beispiel, wie e2e eine Seite in jeder Sprache testet, gebaut mit {stack}."
 }
