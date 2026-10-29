@@ -3,7 +3,7 @@ import { expect } from "e2e";
 
 import { findOverflowingText, readLanguage } from "./fixtures";
 
-// Test ids, attributes, and boxes, never text, so these run unchanged in every language, with no keys.
+// Test ids, attributes, and pixels, never text, so these run unchanged in every language, with no keys.
 
 test("the page is in the browser's language", async ({ app, screen, browser }) => {
   await app.open("/");
@@ -19,6 +19,19 @@ test("sending an empty form marks every required field", async ({ app, screen, b
 
   await expect(browser.locator('[aria-invalid="true"]')).toHaveCount(3);
   await expect(screen.getByTestId("contact-form")).toBeVisible();
+});
+
+// One stored screenshot per language (tests/home.e2e.ts-snapshots/<name>-<target>-<os>.png).
+test("looks right in every language", async ({ app, screen, browser }) => {
+  await app.open("/");
+  // Send is disabled until the page hydrates, and the fonts swap in after the first paint.
+  await expect(screen.getByTestId("send")).toBeEnabled();
+  await browser.evaluate(() => document.fonts.ready.then(() => true));
+  await expect(screen).toHaveScreenshot("home.png");
+
+  await screen.getByTestId("send").click();
+  await expect(browser.locator('[aria-invalid="true"]')).toHaveCount(3);
+  await expect(screen).toHaveScreenshot("errors.png");
 });
 
 // German and Spanish run longer than English: no label, button, error, or placeholder may outgrow its box.
