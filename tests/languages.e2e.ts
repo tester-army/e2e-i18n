@@ -3,13 +3,12 @@ import { expect } from "e2e";
 
 import { ADA, readLanguage, skip } from "./fixtures";
 
-// Each test is written once, in English, and runs once per target. Every agent step goes to the persona who reads
-// the target's language (`agent: language.code`), so no step names a translated string.
+// Written once, in English. Each agent step goes to the persona who reads the target's language.
 describe("in the browser's language", { skip }, () => {
   test("sends the contact form", async ({ app, agent, screen, browser }) => {
     await app.open("/");
     const language = await readLanguage(browser);
-    // What's typed before Vue hydrates the page is lost. Send turns on once it has.
+    // Typing before hydration is lost; Send turns on once the page has hydrated.
     await expect(screen.getByTestId("send")).toBeEnabled();
 
     await agent.act(
@@ -33,7 +32,7 @@ describe("in the browser's language", { skip }, () => {
   test("leaves no text untranslated", async ({ app, agent, screen, browser }) => {
     await app.open("/");
     const language = await readLanguage(browser);
-    // Send on the empty form, so the error messages are on screen too.
+    // Send the empty form, so the errors show too.
     await screen.getByTestId("send").click();
     await expect(browser.locator('[aria-invalid="true"]')).toHaveCount(3);
 
@@ -49,7 +48,7 @@ describe("in the browser's language", { skip }, () => {
     await screen.getByTestId("send").click();
     await expect(browser.locator('[aria-invalid="true"]')).toHaveCount(3);
 
-    // The pixels, not the tree: the tree holds the whole text even when the screen cuts it off.
+    // Pixels only: the tree holds the whole text even when the screen cuts it off.
     await agent.assert(
       "Every label, placeholder, button, note, and error message is shown in full: no text is cut off, hidden behind something, or overlapping other text",
       { agent: language.code, vision: "only" },

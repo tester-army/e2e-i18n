@@ -6,18 +6,17 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const form = reactive({ name: "", email: "", topic: "question", message: "" });
 const showErrors = ref(false);
 const sent = ref<{ name: string; email: string } | null>(null);
-// Send stays off until the page is hydrated, so an early click can't submit the form natively.
+// Send is off until hydration, so an early click can't submit the form natively.
 const hydrated = ref(false);
 onMounted(() => (hydrated.value = true));
 
-// Message keys, not text, so the errors follow the page's language.
+// Keys, not text, so the errors follow the page's language.
 const errors = computed(() => ({
   name: form.name.trim() ? undefined : "errors.name",
   email: EMAIL.test(form.email.trim()) ? undefined : "errors.email",
   message: form.message.trim() ? undefined : "errors.message",
 }));
 const { t } = useI18n();
-// A field's error, in the page's language, once Send has been pressed.
 function errorFor(field: (typeof REQUIRED)[number]) {
   const key = showErrors.value ? errors.value[field] : undefined;
   return key && t(key);

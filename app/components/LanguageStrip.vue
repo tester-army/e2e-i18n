@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// The page's languages, with the one the browser asked for lit. Not a switcher: the browser decides.
+// Not a switcher: it shows the language the browser asked for.
 const { locale, locales } = useI18n();
 </script>
 

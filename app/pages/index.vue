@@ -10,7 +10,7 @@
         <p class="type-body text-e2e-text-secondary">{{ $t("intro.body") }}</p>
       </div>
       <ContactForm />
-      <!-- The package names stay out of the translations: vue-i18n reads "@" as a linked message. -->
+      <!-- Passed in, not translated: vue-i18n reads "@" as a linked message. -->
       <p class="type-code-s text-e2e-text-faint">{{ $t("footnote", { stack: "Nuxt + @nuxtjs/i18n" }) }}</p>
     </div>
   </main>

@@ -2,7 +2,7 @@ import type { Browser } from "@e2e-dev/web";
 
 import { LANGUAGES } from "./languages";
 
-export type Language = (typeof LANGUAGES)[number];
+type Language = (typeof LANGUAGES)[number];
 
 export const skip =
   process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN
@@ -11,8 +11,7 @@ export const skip =
 
 export const ADA = { name: "Ada Lovelace", email: "ada@example.com", message: "Hello from the e2e tests." };
 
-// The language this target's browser is set to. Read from the browser, not the page, or a page in the wrong
-// language would test itself against itself. browser.evaluate needs an open page, so call it after app.open.
+// From the browser, not the page, or a page in the wrong language would pass. Call it after app.open.
 export async function readLanguage(browser: Browser): Promise<Language> {
   const locale = await browser.evaluate(() => navigator.language);
   const language = LANGUAGES.find((candidate) => candidate.locale === locale);
@@ -20,8 +19,7 @@ export async function readLanguage(browser: Browser): Promise<Language> {
   return language;
 }
 
-// Every text on the page that's wider than its box, as "<tag>: <text>": the bug a longer translation brings.
-// Placeholders and the select's chosen option are measured with the field's own font, since the box doesn't grow.
+// Every text wider than its box. Placeholders and the chosen option are measured, since a field doesn't grow.
 export async function findOverflowingText(browser: Browser): Promise<string[]> {
   return browser.evaluate(() => {
     const canvas = document.createElement("canvas").getContext("2d")!;
@@ -33,7 +31,7 @@ export async function findOverflowingText(browser: Browser): Promise<string[]> {
         (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim(),
       );
       if (!(element instanceof HTMLElement) || !ownText || getComputedStyle(element).display === "inline") continue;
-      // Hidden for screen readers on purpose, like Nuxt's 1px route announcer.
+      // Clipped on purpose for screen readers, like Nuxt's route announcer.
       if (element.clientWidth <= 1) continue;
       if (element.scrollWidth > element.clientWidth + 1) overflowing.push(describe(element, element.textContent ?? ""));
     }

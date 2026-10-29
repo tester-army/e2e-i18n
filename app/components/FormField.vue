@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// A label above its control, and the control's error below it. The error's id is `${id}-error`.
+// The error's id is `${id}-error`, for the control's aria-describedby.
 defineProps<{ id: string; label: string; error?: string }>();
 </script>
 

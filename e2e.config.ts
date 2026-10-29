@@ -20,13 +20,13 @@ const PAGE = "The page is a contact form for the e2e team: name, email, topic, m
 export default {
   // The Vercel AI Gateway serves the model id and reads AI_GATEWAY_API_KEY, or the OIDC token of a linked Vercel project.
   agents: {
-    // The agent fixture needs a default with a model, but every step in tests/languages.e2e.ts names a persona.
+    // The agent fixture needs a default with a model, though every step names a persona.
     default: {
       model: gateway("openai/gpt-6-luna-fast"),
       system: "You are a thorough QA agent. Verify every outcome.",
       context: PAGE,
     },
-    // One persona per language. Each agent step names the one that reads its target's language.
+    // One persona per language.
     ...Object.fromEntries(
       LANGUAGES.map(({ code, name }) => [
         code,
@@ -43,6 +43,6 @@ export default {
       ]),
     ),
   },
-  // Every test runs once per target, each with the browser in one language.
+  // Every test runs once per target, each in one browser language.
   targets: LANGUAGES.map(({ code, locale }) => ({ name: code, engine: web({ locale }), app })),
 } satisfies E2EConfig;
