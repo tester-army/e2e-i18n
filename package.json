@@ -16,9 +16,11 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
-    "e2e": "^0.21.3",
     "@e2e-dev/web": "^0.15.3",
+    "@tailwindcss/vite": "^4.3.3",
     "ai": "^7.0.0",
+    "e2e": "^0.21.3",
+    "tailwindcss": "^4.3.3",
     "zod": "^4.1.8"
   }
 }

@@ -1,6 +1,12 @@
+<script setup lang="ts">
+useHead({
+  htmlAttrs: { lang: "en" },
+  bodyAttrs: { class: "e2e flex min-h-dvh flex-col" },
+});
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtRouteAnnouncer />
+  <SiteHeader />
+  <NuxtPage />
 </template>

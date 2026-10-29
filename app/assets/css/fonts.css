@@ -1,0 +1,39 @@
+/* The siblings load these with next/font/local, which sets the --e2e-font-* variables e2e.css reads. */
+
+@font-face {
+  font-family: "Stack Sans Notch";
+  src: url("../fonts/stack-sans-notch-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-standard-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src: url("../fonts/dm-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Mono";
+  src: url("../fonts/dm-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --e2e-font-display: "Stack Sans Notch";
+  --e2e-font-sans: "Inter";
+  --e2e-font-mono: "DM Mono";
+}
