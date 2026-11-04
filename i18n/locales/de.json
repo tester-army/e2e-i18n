@@ -1,45 +1,45 @@
 {
   "meta": {
-    "title": "Kontakt zum e2e-Team",
+    "title": "kontakt zum e2e-team",
     "description": "Ein Kontaktformular auf Englisch, Deutsch und Spanisch, Ende-zu-Ende getestet mit e2e."
   },
   "header": {
-    "home": "e2e-Startseite",
-    "docs": "Doku"
+    "home": "e2e-startseite",
+    "docs": "doku"
   },
   "intro": {
-    "eyebrow": "Kontakt",
-    "heading": "Schreib dem e2e-Team",
-    "body": "Diese Seite spricht die Sprache deines Browsers: Englisch, Deutsch oder Spanisch."
+    "eyebrow": "kontakt",
+    "heading": "schreib dem e2e-team",
+    "body": "diese seite spricht die sprache deines browsers: Englisch, Deutsch oder Spanisch."
   },
   "languages": {
-    "label": "Sprache aus deinem Browser"
+    "label": "sprache aus deinem browser"
   },
   "form": {
-    "name": "Name",
+    "name": "name",
     "namePlaceholder": "Erika Mustermann",
-    "email": "E-Mail",
+    "email": "e-mail",
     "emailPlaceholder": "du{'@'}example.com",
-    "topic": "Thema",
+    "topic": "thema",
     "topics": {
-      "question": "Eine Frage",
-      "billing": "Abrechnung",
-      "bug": "Ein Fehlerbericht"
+      "question": "eine frage",
+      "billing": "abrechnung",
+      "bug": "ein fehlerbericht"
     },
-    "message": "Nachricht",
-    "messagePlaceholder": "Wie können wir helfen?",
-    "note": "Wir antworten innerhalb von zwei Werktagen.",
-    "send": "Nachricht senden"
+    "message": "nachricht",
+    "messagePlaceholder": "wie können wir helfen?",
+    "note": "wir antworten innerhalb von zwei werktagen.",
+    "send": "nachricht senden"
   },
   "errors": {
-    "name": "Gib deinen Namen ein.",
-    "email": "Gib eine gültige E-Mail-Adresse ein.",
-    "message": "Schreib eine Nachricht."
+    "name": "gib deinen namen ein.",
+    "email": "gib eine gültige e-mail-adresse ein.",
+    "message": "schreib eine nachricht."
   },
   "sent": {
-    "title": "Nachricht gesendet",
-    "body": "Danke, {name}. Wir antworten innerhalb von zwei Werktagen an {email}.",
-    "again": "Weitere Nachricht schreiben"
+    "title": "nachricht gesendet",
+    "body": "danke, {name}. wir antworten innerhalb von zwei werktagen an {email}.",
+    "again": "weitere nachricht schreiben"
   },
-  "footnote": "Ein Beispiel, wie e2e eine Seite in jeder Sprache testet, gebaut mit {stack}."
+  "footnote": "ein beispiel, wie e2e eine seite in jeder sprache testet, gebaut mit {stack}."
 }

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Contacta con el equipo de e2e",
+    "title": "contacta con el equipo de e2e",
     "description": "Un formulario de contacto en inglés, alemán y español, probado de principio a fin con e2e."
   },
   "header": {
@@ -8,38 +8,38 @@
     "docs": "documentación"
   },
   "intro": {
-    "eyebrow": "Contacto",
-    "heading": "Escribe al equipo de e2e",
-    "body": "Esta página habla el idioma de tu navegador: inglés, alemán o español."
+    "eyebrow": "contacto",
+    "heading": "escribe al equipo de e2e",
+    "body": "esta página habla el idioma de tu navegador: inglés, alemán o español."
   },
   "languages": {
-    "label": "Idioma de tu navegador"
+    "label": "idioma de tu navegador"
   },
   "form": {
-    "name": "Nombre",
+    "name": "nombre",
     "namePlaceholder": "María García",
-    "email": "Correo electrónico",
+    "email": "correo electrónico",
     "emailPlaceholder": "tu{'@'}example.com",
-    "topic": "Tema",
+    "topic": "tema",
     "topics": {
-      "question": "Una pregunta",
-      "billing": "Facturación",
-      "bug": "Un informe de error"
+      "question": "una pregunta",
+      "billing": "facturación",
+      "bug": "un informe de error"
     },
-    "message": "Mensaje",
-    "messagePlaceholder": "¿En qué podemos ayudarte?",
-    "note": "Respondemos en dos días laborables.",
-    "send": "Enviar mensaje"
+    "message": "mensaje",
+    "messagePlaceholder": "¿en qué podemos ayudarte?",
+    "note": "respondemos en dos días laborables.",
+    "send": "enviar mensaje"
   },
   "errors": {
-    "name": "Escribe tu nombre.",
-    "email": "Escribe un correo electrónico válido.",
-    "message": "Escribe un mensaje."
+    "name": "escribe tu nombre.",
+    "email": "escribe un correo electrónico válido.",
+    "message": "escribe un mensaje."
   },
   "sent": {
-    "title": "Mensaje enviado",
-    "body": "Gracias, {name}. Responderemos a {email} en dos días laborables.",
-    "again": "Escribir otro mensaje"
+    "title": "mensaje enviado",
+    "body": "gracias, {name}. responderemos a {email} en dos días laborables.",
+    "again": "escribir otro mensaje"
   },
-  "footnote": "Un ejemplo de cómo e2e prueba una página en cada idioma, hecho con {stack}."
+  "footnote": "un ejemplo de cómo e2e prueba una página en cada idioma, hecho con {stack}."
 }

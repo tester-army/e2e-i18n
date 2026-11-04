@@ -36,7 +36,7 @@ export default {
           context: [
             PAGE,
             `The browser is set to ${name}, so every text the page shows should be in ${name}.`,
-            "These stay as they are in every language: the brand name e2e, the language codes EN, DE, and ES,",
+            "These stay as they are in every language: the brand name e2e, the language codes en, de, and es,",
             "the names Nuxt and @nuxtjs/i18n, email addresses, the example names in placeholders, and what the visitor typed.",
           ].join(" "),
         },

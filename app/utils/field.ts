@@ -1,5 +1,4 @@
 export const FIELD = [
-  "w-full border border-e2e-field-stroke bg-e2e-field-fill px-4 type-field text-e2e-text-primary",
-  "transition-colors outline-hidden hover:border-e2e-white-50 focus-visible:border-e2e-white-80",
-  "placeholder:text-e2e-text-faint aria-invalid:border-e2e-accent-orange",
+  "w-full bg-e2e-neutral-800 px-e2e-2 type-body-m text-e2e-off-white placeholder:text-e2e-neutral-500",
+  "focus-visible:outline-2 focus-visible:outline-e2e-green aria-invalid:outline-2 aria-invalid:outline-e2e-mint",
 ].join(" ");

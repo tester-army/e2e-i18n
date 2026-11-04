@@ -10,9 +10,9 @@ const control = computed(() => ({
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
-    <label :for="id" class="type-label-xs text-e2e-text-faint">{{ label }}</label>
+  <div class="flex flex-col gap-e2e-1">
+    <label :for="id" class="type-caption text-e2e-neutral-400">{{ label }}</label>
     <slot v-bind="control" />
-    <p v-if="error" :id="`${id}-error`" class="type-caption text-e2e-accent-orange">{{ error }}</p>
+    <p v-if="error" :id="`${id}-error`" class="type-body-s text-e2e-mint">{{ error }}</p>
   </div>
 </template>

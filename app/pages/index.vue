@@ -1,17 +1,17 @@
 <template>
-  <main class="px-6 pt-12 pb-8 sm:px-10 sm:pt-24">
-    <div class="mx-auto flex w-full max-w-300 flex-col gap-6">
-      <div class="flex flex-col gap-3">
-        <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-          <p class="type-eyebrow text-e2e-text-faint">{{ $t("intro.eyebrow") }}</p>
+  <main class="pt-e2e-6 pb-e2e-4 md:pt-e2e-8">
+    <div class="mx-auto flex w-full max-w-312 flex-col gap-e2e-3 px-e2e-3 md:px-e2e-6">
+      <div class="flex flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-x-e2e-3 gap-y-e2e-1">
+          <p class="type-caption text-e2e-mint">{{ $t("intro.eyebrow") }}</p>
           <LanguageStrip />
         </div>
-        <h1 class="type-h1 text-balance text-e2e-text-primary">{{ $t("intro.heading") }}</h1>
-        <p class="type-body text-e2e-text-secondary">{{ $t("intro.body") }}</p>
+        <h1 class="mt-e2e-2 type-h1 text-balance text-e2e-off-white">{{ $t("intro.heading") }}</h1>
+        <p class="mt-e2e-3 type-body-l text-e2e-neutral-400">{{ $t("intro.body") }}</p>
       </div>
       <ContactForm />
       <!-- Passed in, not translated: vue-i18n reads "@" as a linked message. -->
-      <p class="type-code-s text-e2e-text-faint">{{ $t("footnote", { stack: "Nuxt + @nuxtjs/i18n" }) }}</p>
+      <p class="type-body-s text-e2e-neutral-500">{{ $t("footnote", { stack: "Nuxt + @nuxtjs/i18n" }) }}</p>
     </div>
   </main>
 </template>

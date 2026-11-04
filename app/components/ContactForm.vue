@@ -54,17 +54,17 @@ async function writeAnother() {
 </script>
 
 <template>
-  <div class="border border-e2e-hairline-strong bg-e2e-panel">
-    <div v-if="sent" data-testid="sent" class="flex flex-col items-start gap-4 p-6 sm:p-8">
-      <h2 ref="sentHeading" tabindex="-1" class="type-h3-display text-e2e-text-bright outline-hidden">
+  <div class="border border-e2e-neutral-800 bg-e2e-neutral-800/40">
+    <div v-if="sent" data-testid="sent" class="flex flex-col items-start gap-e2e-2 p-e2e-3 md:p-e2e-4">
+      <h2 ref="sentHeading" tabindex="-1" class="type-h3 text-e2e-off-white outline-hidden">
         {{ $t("sent.title") }}
       </h2>
-      <p class="type-body text-e2e-text-secondary">{{ $t("sent.body", sent) }}</p>
-      <OutlineButton class="mt-2 sm:w-auto" @click="writeAnother">{{ $t("sent.again") }}</OutlineButton>
+      <p class="type-body-m text-e2e-neutral-300">{{ $t("sent.body", sent) }}</p>
+      <E2eButton variant="outline" class="mt-e2e-1" @click="writeAnother">{{ $t("sent.again") }}</E2eButton>
     </div>
 
     <form v-else data-testid="contact-form" novalidate @submit.prevent="submit">
-      <div class="grid gap-5 p-6 sm:p-8 md:grid-cols-3">
+      <div class="grid gap-e2e-3 p-e2e-3 md:grid-cols-3 md:p-e2e-4">
         <FormField id="name" v-slot="control" :label="$t('form.name')" :error="errorFor('name')">
           <input
             v-bind="control"
@@ -74,7 +74,7 @@ async function writeAnother() {
             autocomplete="name"
             required
             :placeholder="$t('form.namePlaceholder')"
-            :class="[FIELD, 'h-11']"
+            :class="[FIELD, 'h-e2e-6']"
           />
         </FormField>
 
@@ -87,22 +87,22 @@ async function writeAnother() {
             autocomplete="email"
             required
             :placeholder="$t('form.emailPlaceholder')"
-            :class="[FIELD, 'h-11']"
+            :class="[FIELD, 'h-e2e-6']"
           />
         </FormField>
 
         <FormField id="topic" v-slot="control" :label="$t('form.topic')">
           <div class="relative">
-            <select v-bind="control" v-model="form.topic" :class="[FIELD, 'h-11 appearance-none pe-10']">
+            <select
+              v-bind="control"
+              v-model="form.topic"
+              :class="[FIELD, 'h-e2e-6 appearance-none rounded-none pe-e2e-6']"
+            >
               <option v-for="topic in TOPICS" :key="topic" :value="topic">{{ $t(`form.topics.${topic}`) }}</option>
             </select>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 16 16"
-              class="pointer-events-none absolute inset-e-4 top-1/2 size-3.5 -translate-y-1/2 text-e2e-text-faint"
-            >
-              <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" />
-            </svg>
+            <span class="pointer-events-none absolute inset-e-e2e-2 top-1/2 -translate-y-1/2 text-e2e-neutral-300">
+              <DottedIcon name="chevron-down" />
+            </span>
           </div>
         </FormField>
 
@@ -115,14 +115,16 @@ async function writeAnother() {
               rows="3"
               required
               :placeholder="$t('form.messagePlaceholder')"
-              :class="[FIELD, 'min-h-24 resize-y py-3']"
+              :class="[FIELD, 'block min-h-24 resize-y py-e2e-1']"
             />
           </FormField>
         </div>
 
-        <div class="flex flex-col justify-end gap-4 md:pb-px">
-          <p class="type-caption text-e2e-text-faint">{{ $t("form.note") }}</p>
-          <LightButton type="submit" data-testid="send" :disabled="!hydrated">{{ $t("form.send") }}</LightButton>
+        <div class="flex flex-col justify-end gap-e2e-2">
+          <p class="type-body-s text-e2e-neutral-500">{{ $t("form.note") }}</p>
+          <E2eButton variant="light" type="submit" data-testid="send" class="w-full" :disabled="!hydrated">
+            {{ $t("form.send") }}
+          </E2eButton>
         </div>
       </div>
     </form>

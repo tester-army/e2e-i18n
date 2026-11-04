@@ -36,7 +36,7 @@ To see another language, change your browser's: in Chrome, open Settings → Lan
 Every test runs once per language. `e2e.config.ts` has one target per browser locale (`en-US`, `de-DE`, `es-ES`), so the browser asks for that language and the page answers in it.
 
 - **`tests/home.e2e.ts`** uses test ids, attributes, and stored screenshots, never text, so it runs unchanged in every language and needs no key. It checks the page's `lang`, the form's errors, a screenshot of the form in each language, and that no text is wider than its box, since German and Spanish run longer than English.
-- **`tests/languages.e2e.ts`** is written once, in English, and each agent step goes to a persona who reads the target's language: on the German target, a German reader finds "Nachricht senden" by itself. The personas fill in and send the form, check that no text is left in another language, and check that nothing is cut off. On their first run, they found the logo link's screen-reader label still in English.
+- **`tests/languages.e2e.ts`** is written once, in English, and each agent step goes to a persona who reads the target's language: on the German target, a German reader finds "nachricht senden" by itself. The personas fill in and send the form, check that no text is left in another language, and check that nothing is cut off. On their first run, they found the logo link's screen-reader label still in English.
 
 The personas' model goes through the Vercel AI Gateway, so copy `.env.example` to `.env.local` and set `AI_GATEWAY_API_KEY` (or link a Vercel project); without it, the persona tests skip. Then, with the dev server running:
 

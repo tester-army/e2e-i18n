@@ -19,13 +19,15 @@ export default defineNuxtConfig({
   routeRules: { "/**": { headers: { vary: "Accept-Language" } } },
   // Its floating button would show in screenshots and in the agent's view.
   devtools: { enabled: false },
-  css: ["~/assets/css/fonts.css", "~/assets/css/e2e.css"],
+  css: ["~/assets/css/e2e.css"],
   app: {
     head: {
-      meta: [{ name: "theme-color", content: "#111111" }],
+      meta: [{ name: "theme-color", content: "#000000" }],
       link: [
-        { rel: "icon", href: "/e2e/favicon-black.png", media: "(prefers-color-scheme: light)" },
-        { rel: "icon", href: "/e2e/favicon-white.png", media: "(prefers-color-scheme: dark)" },
+        { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+        { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+        { rel: "manifest", href: "/site.webmanifest" },
       ],
     },
   },

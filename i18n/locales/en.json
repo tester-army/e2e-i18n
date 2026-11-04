@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Contact the e2e team",
+    "title": "contact the e2e team",
     "description": "A contact form in English, German, and Spanish, tested end to end with e2e."
   },
   "header": {
@@ -8,38 +8,38 @@
     "docs": "docs"
   },
   "intro": {
-    "eyebrow": "Contact",
-    "heading": "Write to the e2e team",
-    "body": "This page speaks your browser's language: English, German, or Spanish."
+    "eyebrow": "contact",
+    "heading": "write to the e2e team",
+    "body": "this page speaks your browser's language: English, German, or Spanish."
   },
   "languages": {
-    "label": "Language from your browser"
+    "label": "language from your browser"
   },
   "form": {
-    "name": "Name",
+    "name": "name",
     "namePlaceholder": "Ada Lovelace",
-    "email": "Email",
+    "email": "email",
     "emailPlaceholder": "you{'@'}example.com",
-    "topic": "Topic",
+    "topic": "topic",
     "topics": {
-      "question": "A question",
-      "billing": "Billing",
-      "bug": "A bug report"
+      "question": "a question",
+      "billing": "billing",
+      "bug": "a bug report"
     },
-    "message": "Message",
-    "messagePlaceholder": "How can we help?",
-    "note": "We reply within two working days.",
-    "send": "Send message"
+    "message": "message",
+    "messagePlaceholder": "how can we help?",
+    "note": "we reply within two working days.",
+    "send": "send message"
   },
   "errors": {
-    "name": "Enter your name.",
-    "email": "Enter a valid email address.",
-    "message": "Write a message."
+    "name": "enter your name.",
+    "email": "enter a valid email address.",
+    "message": "write a message."
   },
   "sent": {
-    "title": "Message sent",
-    "body": "Thanks, {name}. We'll reply to {email} within two working days.",
-    "again": "Write another message"
+    "title": "message sent",
+    "body": "thanks, {name}. we'll reply to {email} within two working days.",
+    "again": "write another message"
   },
-  "footnote": "An example of testing one page in every language with e2e, built with {stack}."
+  "footnote": "an example of testing one page in every language with e2e, built with {stack}."
 }
